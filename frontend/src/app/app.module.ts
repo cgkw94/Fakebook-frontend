@@ -10,10 +10,28 @@ import { AdminHomepageComponent } from './admin-homepage/admin-homepage.componen
 import { LoginComponent } from './login/login.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 @NgModule({
-  declarations: [AppComponent, NavBarComponent, UserHomepageComponent, AdminHomepageComponent, LoginComponent, LandingPageComponent, ForbiddenComponent],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  declarations: [
+    AppComponent,
+    NavBarComponent,
+    UserHomepageComponent,
+    AdminHomepageComponent,
+    LoginComponent,
+    LandingPageComponent,
+    ForbiddenComponent,
+    SignUpComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    RouterModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
