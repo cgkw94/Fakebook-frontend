@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { NewPostService } from '../_services/new-post.service';
+import { UserAuthService } from '../_services/user-auth.service';
 
 @Component({
   selector: 'app-new-post',
@@ -7,11 +9,23 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./new-post.component.css'],
 })
 export class NewPostComponent implements OnInit {
-  constructor() {}
+  constructor(
+    private userAuthService: UserAuthService,
+    private newPostService: NewPostService
+  ) {}
 
   ngOnInit(): void {}
 
-  newPost(userNewPost: NgForm) {
-    console.log(userNewPost.value);
+  //decodedToken.sub = username
+  decodedToken = this.userAuthService.getDecodedAccessToken(
+    this.userAuthService.getToken()
+  );
+
+  newPost(userNewPost: NgForm, userName: string) {
+    this.newPostService
+      .newPost(userNewPost.value, userName)
+      .subscribe((response: any) => {
+        console.warn('result', response);
+      });
   }
 }

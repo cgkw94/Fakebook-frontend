@@ -21,10 +21,27 @@ export class UserService {
   }
 
   public signUp(signUpData: any) {
+    console.log(signUpData);
     return this.httpclient.post(
       `${this.PATH_OF_API}/registerNewUser`,
-      signUpData
+      signUpData,
+      {
+        headers: this.requestHeader,
+      }
     );
+  }
+
+  //testing
+  public forUser() {
+    return this.httpclient.get(`${this.PATH_OF_API}/forUser`, {
+      responseType: 'text',
+    });
+  }
+  //testing
+  public forAdmin() {
+    return this.httpclient.get(`${this.PATH_OF_API}/forAdmin`, {
+      responseType: 'text',
+    });
   }
 
   public roleMatch(allowedRole: string) {

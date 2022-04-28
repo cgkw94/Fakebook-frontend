@@ -17,6 +17,8 @@ import { NewPostComponent } from './new-post/new-post.component';
 import { AuthGuard } from './_auth/auth.guard';
 import { AuthInterceptor } from './_auth/auth.interceptor';
 import { UserService } from './_services/user.service';
+import { PostCardComponent } from './post-card/post-card.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import { UserService } from './_services/user.service';
     ForbiddenComponent,
     SignUpComponent,
     NewPostComponent,
+    PostCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,6 +39,7 @@ import { UserService } from './_services/user.service';
     FormsModule,
     HttpClientModule,
     RouterModule,
+    NgxPaginationModule,
   ],
   providers: [
     AuthGuard,

@@ -26,6 +26,7 @@ export class AuthInterceptor implements HttpInterceptor {
     }
 
     const token = this.userAuthSerivce.getToken();
+
     req = this.addToken(req, token);
 
     return next.handle(req).pipe(
@@ -36,13 +37,13 @@ export class AuthInterceptor implements HttpInterceptor {
         } else if (err.status === 403) {
           this.router.navigate(['/forbidden']);
         }
-        return throwError('Something is wrong');
+        return throwError('Some thing is wrong');
       })
     );
   }
 
-  private addToken(req: HttpRequest<any>, token: string) {
-    return req.clone({
+  private addToken(request: HttpRequest<any>, token: string) {
+    return request.clone({
       setHeaders: {
         Authorization: `Bearer ${token}`,
       },
