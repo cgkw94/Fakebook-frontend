@@ -4,16 +4,34 @@ import { AdminHomepageComponent } from './admin-homepage/admin-homepage.componen
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { LoginComponent } from './login/login.component';
+import { NewPostComponent } from './new-post/new-post.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { UserHomepageComponent } from './user-homepage/user-homepage.component';
+import { AuthGuard } from './_auth/auth.guard';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
-  { path: 'admin', component: AdminHomepageComponent },
-  { path: 'user', component: UserHomepageComponent },
+  {
+    path: 'admin',
+    component: AdminHomepageComponent,
+    canActivate: [AuthGuard],
+    data: { role: 'Admin' },
+  },
+  {
+    path: 'user',
+    component: UserHomepageComponent,
+    canActivate: [AuthGuard],
+    data: { role: 'User' },
+  },
   { path: 'login', component: LoginComponent },
   { path: 'forbidden', component: ForbiddenComponent },
   { path: 'signup', component: SignUpComponent },
+  {
+    path: 'newpost',
+    component: NewPostComponent,
+    canActivate: [AuthGuard],
+    data: { role: 'User' },
+  },
 ];
 
 @NgModule({

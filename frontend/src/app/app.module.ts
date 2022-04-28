@@ -10,9 +10,13 @@ import { AdminHomepageComponent } from './admin-homepage/admin-homepage.componen
 import { LoginComponent } from './login/login.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { NewPostComponent } from './new-post/new-post.component';
+import { AuthGuard } from './_auth/auth.guard';
+import { AuthInterceptor } from './_auth/auth.interceptor';
+import { UserService } from './_services/user.service';
 
 @NgModule({
   declarations: [
@@ -24,6 +28,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     LandingPageComponent,
     ForbiddenComponent,
     SignUpComponent,
+    NewPostComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,7 +37,15 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     HttpClientModule,
     RouterModule,
   ],
-  providers: [],
+  providers: [
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+    UserService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
