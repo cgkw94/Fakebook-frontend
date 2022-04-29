@@ -19,6 +19,7 @@ import { AuthInterceptor } from './_auth/auth.interceptor';
 import { UserService } from './_services/user.service';
 import { PostCardComponent } from './post-card/post-card.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { NgxBootstrapIconsModule, allIcons } from 'ngx-bootstrap-icons';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     HttpClientModule,
     RouterModule,
     NgxPaginationModule,
+    NgxBootstrapIconsModule.pick(allIcons),
   ],
   providers: [
     AuthGuard,

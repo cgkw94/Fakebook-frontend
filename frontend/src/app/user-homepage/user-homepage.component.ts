@@ -14,6 +14,7 @@ export class UserHomepageComponent implements OnInit {
   itemsPerPage = 10;
   allPost: any;
   totalItems: any;
+  userNameMatch: boolean = false;
 
   constructor(
     private userAuthService: UserAuthService,
@@ -43,6 +44,7 @@ export class UserHomepageComponent implements OnInit {
         this.totalItems = data.totalElements;
       });
   }
+  //pagination
   gty(page: any) {
     this.httpclient
       .get(

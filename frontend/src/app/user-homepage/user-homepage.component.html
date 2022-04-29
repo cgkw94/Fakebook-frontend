@@ -7,7 +7,7 @@
 </button>
 
 <div>
-  <h2
+  <app-post-card
     *ngFor="
       let post of allPost
         | paginate
@@ -17,10 +17,11 @@
               totalItems: totalItems
             }
     "
-  >
-    {{ post.id }}
-  </h2>
+    [postData]="post"
+    [userData]="post.user"
+  ></app-post-card>
 </div>
+
 <pagination-controls
   class="pagi"
   (pageChange)="gty((page = $event))"
