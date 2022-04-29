@@ -10,8 +10,6 @@ export class PostCardComponent implements OnInit {
   @Input() postData = { id: 0, content: '', hyperlink: '' };
   @Input() userData = { userName: '', userFirstName: '' };
 
-  renderDelete: boolean = false;
-
   constructor(private userAuthService: UserAuthService) {}
 
   ngOnInit(): void {}
@@ -19,15 +17,4 @@ export class PostCardComponent implements OnInit {
   decodedToken = this.userAuthService.getDecodedAccessToken(
     this.userAuthService.getToken()
   );
-
-  checkUserName() {
-    if (this.decodedToken.sub === this.userData.userName) {
-      this.renderDelete = true;
-    } else {
-      this.renderDelete = false;
-    }
-    // console.log(this.decodedToken.sub);
-    console.log(this.userData.userName);
-    console.log(this.renderDelete);
-  }
 }

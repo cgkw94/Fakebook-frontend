@@ -14,7 +14,6 @@ export class UserHomepageComponent implements OnInit {
   itemsPerPage = 10;
   allPost: any;
   totalItems: any;
-  userNameMatch: boolean = false;
 
   constructor(
     private userAuthService: UserAuthService,
