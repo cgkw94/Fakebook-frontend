@@ -7,8 +7,10 @@ import { UserAuthService } from '../_services/user-auth.service';
   styleUrls: ['./post-card.component.css'],
 })
 export class PostCardComponent implements OnInit {
-  @Input() postData = { id: 0, content: '', hyperlink: '' };
+  @Input() postData = { id: 0, content: '', hyperlink: '', file_path: '' };
   @Input() userData = { userName: '', userFirstName: '' };
+
+  baseUrl = 'http://localhost:8082/files/';
 
   constructor(private userAuthService: UserAuthService) {}
 

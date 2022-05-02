@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NewPostService } from '../_services/new-post.service';
 import { UserAuthService } from '../_services/user-auth.service';
+import { UploadFileService } from 'src/app/_services/upload-file.service';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -19,7 +20,8 @@ export class UserHomepageComponent implements OnInit {
     private userAuthService: UserAuthService,
     private router: Router,
     private postService: NewPostService,
-    private httpclient: HttpClient
+    private httpclient: HttpClient,
+    private uploadService: UploadFileService
   ) {}
 
   ngOnInit(): void {

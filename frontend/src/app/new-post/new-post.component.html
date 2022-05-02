@@ -6,9 +6,12 @@
   <div class="card" style="padding: 20px">
     <form
       #userNewPost="ngForm"
-      (ngSubmit)="newPost(userNewPost, decodedToken.sub)"
+      (ngSubmit)="upload(userNewPost, decodedToken.sub)"
     >
       {{ userNewPost.value | json }}
+      <label class="btn btn-default p-0">
+        <input type="file" (change)="selectFile($event)" />
+      </label>
       <input
         type="text"
         ngModel

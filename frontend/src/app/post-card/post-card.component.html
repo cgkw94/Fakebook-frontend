@@ -1,11 +1,18 @@
-<div class="card mt-5 post-card" style="width: 18rem">
+<div class="card mt-5 post-card" style="width: 40rem">
   <div class="card-body">
-    {{ decodedToken.sub }} {{ userData.userName }}
-    <span
-      class="bi bi-trash trash"
-      *ngIf="decodedToken.sub === userData.userName"
-    ></span>
-    <h5 class="card-title">Posted By: {{ userData.userName }}</h5>
+    <button type="button" class="btn btn-light btn-sm delete-button">
+      <span
+        class="bi bi-trash trash"
+        *ngIf="decodedToken.sub === userData.userName"
+      ></span>
+    </button>
+
+    <h2 class="card-title">Posted By: {{ userData.userName }}</h2>
+    <img
+      [src]="baseUrl + postData.file_path"
+      class="w-100 p-3"
+      style="width: 20rem"
+    />
     <p class="card-text">
       {{ postData.content }}
     </p>
