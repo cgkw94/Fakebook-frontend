@@ -12,7 +12,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UserHomepageComponent implements OnInit {
   page: number = 0;
-  itemsPerPage = 3;
+  itemsPerPage: number = 3;
   allPost: any;
   totalItems: any;
 
@@ -41,7 +41,7 @@ export class UserHomepageComponent implements OnInit {
       )
       .subscribe((data: any) => {
         this.allPost = data.content;
-        console.log(this.allPost);
+
         this.totalItems = data.totalElements;
       });
   }

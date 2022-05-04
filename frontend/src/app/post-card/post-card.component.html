@@ -50,11 +50,16 @@
           [src]="baseUrl + userData.userName + '/' + postData.file_path"
           class="w-100 p-3"
           style="width: 20rem"
+          *ngIf="postData.hyperlink === ''"
         />
-      </div>
 
-      <div class="text-center" *ngIf="postData.hyperlink !== ''">
-        <a href="{{ postData.hyperlink }}">Check this out!</a>
+        <a href="{{ postData.hyperlink }}" *ngIf="postData.hyperlink !== ''">
+          <img
+            [src]="baseUrl + userData.userName + '/' + postData.file_path"
+            class="w-100 p-3"
+            style="width: 20rem"
+          />
+        </a>
       </div>
 
       <p class="card-text">{{ postData.viewCount }} Views</p>

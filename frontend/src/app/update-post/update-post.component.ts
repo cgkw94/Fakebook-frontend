@@ -24,7 +24,6 @@ export class UpdatePostComponent implements OnInit {
   ngOnInit(): void {
     this.postId = this.activatedRoute.snapshot.params['postId'];
     this.getPost();
-    console.log(this.postDetails);
   }
 
   updatePost(postId: number, updatedPost: NgForm) {
@@ -37,7 +36,6 @@ export class UpdatePostComponent implements OnInit {
   getPost() {
     this.post.getPost(this.postId).subscribe((response: any) => {
       this.postDetails = response;
-      console.warn('result', response);
     });
   }
 }

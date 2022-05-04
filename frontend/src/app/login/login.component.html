@@ -1,7 +1,6 @@
 <div class="container mt-5">
   <div class="card" style="padding: 20px">
     <form #userLogin="ngForm" (ngSubmit)="login(userLogin)">
-      {{ userLogin.value | json }}
       <input
         type="text"
         ngModel

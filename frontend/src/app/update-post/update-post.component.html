@@ -4,7 +4,6 @@
 
 <div class="container mt-5 w-50">
   <div class="card" style="padding: 20px">
-    {{ userUpdatePost.value | json }}
     <form
       #userUpdatePost="ngForm"
       (ngSubmit)="updatePost(postId, userUpdatePost.value)"

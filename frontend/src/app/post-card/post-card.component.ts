@@ -47,9 +47,7 @@ export class PostCardComponent implements OnInit {
   }
 
   addViewCount() {
-    this.postService.addViewCount(this.postData.id).subscribe((data: any) => {
-      console.log('added view');
-    });
+    this.postService.addViewCount(this.postData.id).subscribe();
   }
 
   editPostRoute() {
