@@ -1,5 +1,9 @@
-<div class="container mt-5">
+<div class="container mt-5 w-50">
   <div class="card text-center" style="padding: 20px">
-    <h1>You are admin</h1>
+    <h1>All User</h1>
   </div>
+</div>
+
+<div class="container row d-flex justify-content-center">
+  <app-user-card *ngFor="let user of users" [userData]="user"></app-user-card>
 </div>

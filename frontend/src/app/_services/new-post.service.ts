@@ -24,4 +24,27 @@ export class NewPostService {
       `${this.PATH_OF_API}/allpost?page=${page}&size=${size}&sort=createdAt,desc`
     );
   }
+
+  public getPost(postId: number) {
+    return this.httpclient.get(`${this.PATH_OF_API}/posts/${postId}`);
+  }
+
+  public deletePost(userName: string, postId: number) {
+    return this.httpclient.delete(
+      `${this.PATH_OF_API}/user/${userName}/posts/${postId}`
+    );
+  }
+
+  public addViewCount(postId: number) {
+    return this.httpclient.get(
+      `${this.PATH_OF_API}/posts/${postId}/updateViewCount`
+    );
+  }
+
+  public updatePost(postId: number, updatedPost: any) {
+    return this.httpclient.put(
+      `${this.PATH_OF_API}/posts/${postId}`,
+      updatedPost
+    );
+  }
 }

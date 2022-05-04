@@ -1,0 +1,20 @@
+<div
+  class="card mt-5 post-card d-flex p-2 align-items-center"
+  style="width: 25rem"
+>
+  <div class="card-body">
+    <h2 class="card-title">{{ userData.userName }}</h2>
+    <p class="card-text">Member since: {{ userData.createdAt }}</p>
+    <button
+      *ngIf="userData.role[0].roleName === 'User'"
+      mwlConfirmationPopover
+      [popoverTitle]="popoverTitle"
+      [popoverMessage]="popoverMessage"
+      placement="right"
+      (confirm)="deleteUser(userData.userName)"
+      (cancel)="cancelClicked = true"
+    >
+      Delete
+    </button>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<div>
+  <h2 class="text-center" style="padding-top: 40px">Update Post</h2>
+</div>
+
+<div class="container mt-5 w-50">
+  <div class="card" style="padding: 20px">
+    {{ userUpdatePost.value | json }}
+    <form
+      #userUpdatePost="ngForm"
+      (ngSubmit)="updatePost(postId, userUpdatePost.value)"
+    >
+      <input
+        type="text"
+        name="content"
+        id="content"
+        [(ngModel)]="postDetails.content"
+        placeholder="Whats on your mind?"
+        class="form-control mb-3"
+        style="height: 200px; font-size: 32px"
+      />
+
+      <input
+        type="text"
+        [(ngModel)]="postDetails.hyperlink"
+        name="hyperlink"
+        id="hyperlink"
+        placeholder="hyperlink"
+        class="form-control mb-3"
+      />
+
+      <div class="row d-flex justify-content-center">
+        <input
+          type="submit"
+          value="Submit"
+          class="btn btn-outline-primary form-control rounded-0 w-25"
+        />
+      </div>
+    </form>
+  </div>
+</div>

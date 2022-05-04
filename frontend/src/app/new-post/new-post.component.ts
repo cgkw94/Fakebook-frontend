@@ -47,6 +47,7 @@ export class NewPostComponent implements OnInit {
 
   upload(userNewPost: NgForm, userName): void {
     this.progress = 0;
+
     if (this.selectedFiles) {
       const file: File | null = this.selectedFiles.item(0);
       if (file) {
@@ -55,7 +56,7 @@ export class NewPostComponent implements OnInit {
           .upload(
             this.currentFile,
             userNewPost.value.content,
-            userNewPost.value.content.hyperlink,
+            userNewPost.value.hyperlink,
             userName
           )
           .subscribe(

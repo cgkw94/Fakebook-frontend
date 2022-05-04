@@ -1,28 +1,31 @@
-<button
-  type="button"
-  class="btn btn-primary btn-lg btn-info"
-  routerLink="/newpost"
->
-  Submit New Post
-</button>
+<div class="container">
+  <div class="row align-items-center justify-content-center">
+    <button
+      type="button"
+      class="btn btn-primary btn-lg btn-info"
+      routerLink="/newpost"
+    >
+      Submit New Post
+    </button>
+  </div>
+  <div class="row justify-content-center">
+    <app-post-card
+      *ngFor="
+        let post of allPost
+          | paginate
+            : {
+                itemsPerPage: itemsPerPage,
+                currentPage: page,
+                totalItems: totalItems
+              }
+      "
+      [postData]="post"
+      [userData]="post.user"
+    ></app-post-card>
+  </div>
 
-<div>
-  <app-post-card
-    *ngFor="
-      let post of allPost
-        | paginate
-          : {
-              itemsPerPage: itemsPerPage,
-              currentPage: page,
-              totalItems: totalItems
-            }
-    "
-    [postData]="post"
-    [userData]="post.user"
-  ></app-post-card>
+  <pagination-controls
+    class="pagi"
+    (pageChange)="gty((page = $event))"
+  ></pagination-controls>
 </div>
-
-<pagination-controls
-  class="pagi"
-  (pageChange)="gty((page = $event))"
-></pagination-controls>

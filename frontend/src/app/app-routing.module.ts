@@ -6,6 +6,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { LoginComponent } from './login/login.component';
 import { NewPostComponent } from './new-post/new-post.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { UpdatePostComponent } from './update-post/update-post.component';
 import { UserHomepageComponent } from './user-homepage/user-homepage.component';
 import { AuthGuard } from './_auth/auth.guard';
 
@@ -20,8 +21,6 @@ const routes: Routes = [
   {
     path: 'user',
     component: UserHomepageComponent,
-    canActivate: [AuthGuard],
-    data: { role: 'User' },
   },
   { path: 'login', component: LoginComponent },
   { path: 'forbidden', component: ForbiddenComponent },
@@ -29,8 +28,10 @@ const routes: Routes = [
   {
     path: 'newpost',
     component: NewPostComponent,
-    canActivate: [AuthGuard],
-    data: { role: 'User' },
+  },
+  {
+    path: 'updatepost/:postId',
+    component: UpdatePostComponent,
   },
 ];
 

@@ -31,6 +31,14 @@ export class UserService {
     );
   }
 
+  public getAllUser() {
+    return this.httpclient.get(`${this.PATH_OF_API}/allUser`);
+  }
+
+  public deleteUser(userName: string) {
+    return this.httpclient.delete(`${this.PATH_OF_API}/user/${userName}`);
+  }
+
   //testing
   public forUser() {
     return this.httpclient.get(`${this.PATH_OF_API}/forUser`, {

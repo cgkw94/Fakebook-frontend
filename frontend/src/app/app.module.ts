@@ -20,6 +20,9 @@ import { UserService } from './_services/user.service';
 import { PostCardComponent } from './post-card/post-card.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgxBootstrapIconsModule, allIcons } from 'ngx-bootstrap-icons';
+import { UpdatePostComponent } from './update-post/update-post.component';
+import { UserCardComponent } from './user-card/user-card.component';
+import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 
 @NgModule({
   declarations: [
@@ -33,6 +36,8 @@ import { NgxBootstrapIconsModule, allIcons } from 'ngx-bootstrap-icons';
     SignUpComponent,
     NewPostComponent,
     PostCardComponent,
+    UpdatePostComponent,
+    UserCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,6 +47,9 @@ import { NgxBootstrapIconsModule, allIcons } from 'ngx-bootstrap-icons';
     RouterModule,
     NgxPaginationModule,
     NgxBootstrapIconsModule.pick(allIcons),
+    ConfirmationPopoverModule.forRoot({
+      confirmButtonType: 'danger', //set defaults here
+    }),
   ],
   providers: [
     AuthGuard,

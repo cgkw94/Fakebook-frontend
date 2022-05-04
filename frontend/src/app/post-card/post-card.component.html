@@ -1,23 +1,63 @@
-<div class="card mt-5 post-card" style="width: 40rem">
-  <div class="card-body">
-    <button type="button" class="btn btn-light btn-sm delete-button">
-      <span
-        class="bi bi-trash trash"
-        *ngIf="decodedToken.sub === userData.userName"
-      ></span>
-    </button>
+<div class="container">
+  <div class="card mt-5 post-card row" style="width: 40rem">
+    <div class="card-body">
+      <div class="delete-edit" *ngIf="userRole === 'User'">
+        <button
+          class="btn btn-primary a-btn-slide-text"
+          (click)="editPostRoute()"
+          *ngIf="decodedToken.sub === userData.userName"
+        >
+          <span><strong>Edit</strong></span>
+        </button>
+        <button
+          type="button"
+          class="btn btn-light btn-sm delete-button"
+          *ngIf="decodedToken.sub === userData.userName"
+          (click)="deletePost(userData.userName)"
+        >
+          <span
+            class="bi bi-trash trash"
+            *ngIf="decodedToken.sub === userData.userName"
+          ></span>
+        </button>
+      </div>
 
-    <h2 class="card-title">Posted By: {{ userData.userName }}</h2>
-    <img
-      [src]="baseUrl + postData.file_path"
-      class="w-100 p-3"
-      style="width: 20rem"
-    />
-    <p class="card-text">
-      {{ postData.content }}
-    </p>
-    <a href="{{ postData.hyperlink }}" target="_blank" class="btn btn-primary">
-      Check this out!
-    </a>
+      <div class="delete-edit" *ngIf="userRole === 'Admin'">
+        <button
+          class="btn btn-primary a-btn-slide-text"
+          (click)="editPostRoute()"
+        >
+          <span><strong>Edit</strong></span>
+        </button>
+        <button
+          type="button"
+          class="btn btn-light btn-sm delete-button"
+          (click)="deletePost(userData.userName)"
+        >
+          <span class="bi bi-trash trash"></span>
+        </button>
+      </div>
+
+      <h2 class="card-title">{{ userData.userName }}</h2>
+      <div class="text-center">
+        <p class="card-text">
+          {{ postData.content }}
+        </p>
+      </div>
+
+      <div class="text-center">
+        <img
+          [src]="baseUrl + userData.userName + '/' + postData.file_path"
+          class="w-100 p-3"
+          style="width: 20rem"
+        />
+      </div>
+
+      <div class="text-center" *ngIf="postData.hyperlink !== ''">
+        <a href="{{ postData.hyperlink }}">Check this out!</a>
+      </div>
+
+      <p class="card-text">{{ postData.viewCount }} Views</p>
+    </div>
   </div>
 </div>
